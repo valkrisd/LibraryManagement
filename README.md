@@ -16,7 +16,7 @@ The Library Management System is a web application designed to streamline book m
 
 ## Technology Stack
 
-- Framework: Spring Boot
+- Framework: Spring
 - Database: PostgreSQL
 - Front-end: Thymeleaf, HTML, CSS
 - Back-end: Java, Spring MVC, Hibernate
@@ -33,22 +33,6 @@ To run the Library Management System locally:
 5. Build and run the application.
 6. Access the application in your browser at `http://localhost:8080`.
 
-## Contributing
-
-Contributions to the Library Management System project are welcome. To contribute:
-
-1. Fork the repository.
-2. Create a new branch for your feature or bug fix: `git checkout -b feature-name`.
-3. Commit your changes: `git commit -m "Description of your changes."`.
-4. Push to the branch: `git push origin feature-name`.
-5. Submit a pull request.
-
-## License
-
-This project is licensed under the [MIT License](LICENSE).
-
 ## Contact
 
 For any inquiries or feedback, please contact us at [email protected]
-
-We appreciate your interest and contributions to the Library Management System. Happy coding!
