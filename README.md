@@ -35,4 +35,4 @@ To run the Library Management System locally:
 
 ## Contact
 
-For any inquiries or feedback, please contact me at **vladislav.niiazov@gmail.com**
+For any feedback please contact me at **vladislav.niiazov@gmail.com**
