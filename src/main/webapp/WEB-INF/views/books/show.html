@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Book</title>
+    <title>Книга</title>
 </head>
 <body>
 <h3>Book info</h3>
@@ -19,6 +19,11 @@
         </form>
 </span>
 
+<!--<form th:method="PATCH" th:action="@{/books/release/{id}(id=${book.getId()})}">-->
+<!--    <br/>-->
+<!--    <button type="submit" th:if="${person != null}">Release book</button>-->
+<!--</form>-->
+
 <span th:if="${person == null}">
     <span style="white-space: nowrap;">This book is available. Check it out for someone?</span>
     <form th:method="PATCH" th:action="@{/books/set/{bookId}(bookId=${book.getId()})}">
@@ -29,6 +34,16 @@
     <input type="submit" value="Check out"/>
 </form>
 </span>
+
+
+<!--<form th:method="PATCH" th:action="@{/set/{id}(id=${book.getId()})}">-->
+<!--    <label for="person">Choose new owner: </label>-->
+<!--    <select th:object="${person}" th:field="*{id}" id="person">-->
+<!--        <option th:each="person : ${people}" th:value="${person.getId()}"-->
+<!--                th:text="${person.getName()}"></option>-->
+<!--    </select>-->
+<!--    <input type="submit" th:if="${person == null}" value="Check out"/>-->
+<!--</form>-->
 
 <hr/>
 <br/>
