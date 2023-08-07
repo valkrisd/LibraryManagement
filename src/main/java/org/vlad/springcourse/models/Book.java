@@ -1,7 +1,5 @@
 package org.vlad.springcourse.models;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
 import javax.persistence.*;
 import javax.validation.constraints.*;
 

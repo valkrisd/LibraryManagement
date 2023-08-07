@@ -7,8 +7,6 @@ import org.springframework.validation.Validator;
 import org.vlad.springcourse.models.Person;
 import org.vlad.springcourse.services.PeopleService;
 
-import java.util.Optional;
-
 @Component
 public class PersonValidator implements Validator {
 

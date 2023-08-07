@@ -5,7 +5,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 import org.vlad.springcourse.models.Book;
-import org.vlad.springcourse.services.BooksService;
 
 import java.time.Year;
 

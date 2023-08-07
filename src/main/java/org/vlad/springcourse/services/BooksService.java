@@ -8,7 +8,6 @@ import org.vlad.springcourse.models.Person;
 import org.vlad.springcourse.repositories.BooksRepository;
 import org.vlad.springcourse.repositories.PeopleRepository;
 
-import java.time.Year;
 import java.util.List;
 import java.util.Optional;
 
