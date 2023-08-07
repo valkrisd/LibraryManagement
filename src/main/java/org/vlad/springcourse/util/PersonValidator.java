@@ -2,20 +2,22 @@ package org.vlad.springcourse.util;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
+import org.vlad.springcourse.dao.PersonDAO;
 import org.vlad.springcourse.models.Person;
-import org.vlad.springcourse.services.PeopleService;
+
+import java.util.Optional;
 
 @Component
 public class PersonValidator implements Validator {
 
-    private final PeopleService peopleService;
+    private final PersonDAO personDAO;
 
     @Autowired
-    public PersonValidator(PeopleService peopleService) {
-
-        this.peopleService = peopleService;
+    public PersonValidator(PersonDAO personDAO) {
+        this.personDAO = personDAO;
     }
 
     @Override
@@ -28,14 +30,14 @@ public class PersonValidator implements Validator {
         Person person = (Person) target;
 
         // Check if the user is editing their data and the email remains unchanged
-        Person existingPerson = peopleService.findOne(person.getId());
-        if (existingPerson != null) if(existingPerson.getEmail().equals(person.getEmail())) {
+        Optional<Person> existingPerson = personDAO.show(person.getId());
+        if (existingPerson.isPresent() && existingPerson.get().getEmail().equals(person.getEmail())) {
             return; // Skip email validation
         }
-        if (peopleService.findByEmail(person.getEmail()).isPresent())
+        if (personDAO.show(person.getEmail()).isPresent())
             errors.rejectValue("email", "", "This email already taken");
 
-        if (person.getName().length() > 0) if (!Character.isUpperCase(person.getName().codePointAt(0)))
+        if (!Character.isUpperCase(person.getName().codePointAt(0)))
             errors.rejectValue("name", "", "Name should start with a capital letter");
     }
 }
