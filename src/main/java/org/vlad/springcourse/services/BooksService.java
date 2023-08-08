@@ -31,19 +31,17 @@ public class BooksService {
     }
     public Person getCurrentBookOwner(int id) {
         Optional<Book> optionalBook = booksRepository.findById(id);
-        return optionalBook.orElseThrow().getOwner();
+        return optionalBook.map(Book::getOwner).orElse(null);
     }
 
     @Transactional
     public void save(Book book) {
-
         booksRepository.save(book);
     }
 
     @Transactional
     public void update(int id, Book updatedBook) {
         updatedBook.setId(id);
-
         booksRepository.save(updatedBook);
     }
     @Transactional
@@ -53,12 +51,17 @@ public class BooksService {
 
     @Transactional
     public void deleteCurrentBookOwner(int id) {
-        Optional<Book> optionalBook = booksRepository.findById(id);
-        optionalBook.orElseThrow().setOwner(null);
+        Book book = booksRepository.findById(id).orElseThrow();
+        book.setOwner(null);
+
+        booksRepository.save(book);
     }
     @Transactional
     public void setNewBookOwner(int person_id, int id) {
-        Optional<Book> optionalBook = booksRepository.findById(id);
-        optionalBook.orElseThrow().setOwner(peopleRepository.findById(person_id).orElseThrow());
+        Book book = booksRepository.findById(id).orElseThrow();
+        Person newOwner = peopleRepository.findById(person_id).orElseThrow();
+
+        book.setOwner(newOwner);
+        booksRepository.save(book);
     }
 }

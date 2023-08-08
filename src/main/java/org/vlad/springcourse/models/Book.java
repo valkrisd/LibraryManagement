@@ -31,11 +31,10 @@ public class Book {
     @JoinColumn(name = "person_id", referencedColumnName = "id")
     private Person owner;
 
-    public Book(String name, String author, int year, Person owner) {
+    public Book(String name, String author, int year) {
         this.name = name;
         this.author = author;
         this.year = year;
-        this.owner = owner;
     }
 
     public Book() {

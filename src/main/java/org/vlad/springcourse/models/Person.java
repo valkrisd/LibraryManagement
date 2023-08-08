@@ -41,12 +41,11 @@ public class Person {
     public Person() {
     }
 
-    public Person(String name, int age, String email, String address, List<Book> bookList) {
+    public Person(String name, int age, String email, String address) {
         this.name = name;
         this.age = age;
         this.email = email;
         this.address = address;
-        this.bookList = bookList;
     }
 
     public int getId() {

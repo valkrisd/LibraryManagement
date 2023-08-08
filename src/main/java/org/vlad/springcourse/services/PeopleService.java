@@ -1,5 +1,6 @@
 package org.vlad.springcourse.services;
 
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -7,6 +8,7 @@ import org.vlad.springcourse.models.Book;
 import org.vlad.springcourse.models.Person;
 import org.vlad.springcourse.repositories.PeopleRepository;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -29,8 +31,14 @@ public class PeopleService {
     }
     public List<Book> getPersonBooks(int id) {
         Optional<Person> optionalPerson = peopleRepository.findById(id);
-        return optionalPerson.orElseThrow().getBookList();
+
+         if (optionalPerson.isPresent()) {
+             Hibernate.initialize(optionalPerson.get().getBookList());
+             return optionalPerson.get().getBookList();
+         }
+         else return Collections.emptyList();
     }
+
     public Optional<Person> findByEmail(String email) {
         return peopleRepository.findByEmail(email);
     }
