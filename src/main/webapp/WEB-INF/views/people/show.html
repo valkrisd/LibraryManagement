@@ -3,31 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <title>Person</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
 </head>
+
 <body>
-<h3>Person info</h3>
-<p th:text="${'Name: ' + person.getName()}">VALUE</p>
-<p th:text="${'Age: ' + person.getAge()}">VALUE</p>
-<p th:text="${'Email: ' + person.getEmail()}">VALUE</p>
-<p th:text="${'Address: ' + person.getAddress()}">VALUE</p>
+<nav class="navbar is-dark mb-6">
+    <div class="navbar-brand">
+        <a class="navbar-item" href="javascript:history.back()">
+            <span>Back</span>
+        </a>
+        <a class="navbar-item" href="/main">
+            <span>Home</span>
+        </a>
+        <a class="navbar-item" href="/people">
+            <span>People list</span>
+        </a>
+        <a class="navbar-item" href="/books">
+            <span>Books list</span>
+        </a>
+    </div>
+</nav>
 
-<form th:method="GET" th:action="@{/people/{id}/edit(id=${person.getId()})}">
-    <input type="submit" value="Edit"/>
-</form>
+<div class="container mb-4">
+    <h4 class="title is-4 mb-2">Person info</h4>
+    <div class="notification is-info is-light">
+        <p class="subtitle is-6" th:text="'Name: ' + ${person.getName()}">VALUE</p>
+        <p class="subtitle is-6" th:text="'Age: ' + ${person.getAge()}">VALUE</p>
+        <p class="subtitle is-6" th:text="'Email: ' + ${person.getEmail()}">VALUE</p>
+        <p class="subtitle is-6" th:text="'Address: ' + ${person.getAddress()}">VALUE</p>
+    </div>
 
-<div th:if="${not #lists.isEmpty(books)}">
-    <hr/>
-    <h4>List of books:</h4>
-    <ul>
-        <li th:each="book : ${books}" th:text="${book.getName()} + ', ' + ${book.getAuthor()} + ', ' + ${book.getYear()}"></li>
-    </ul>
+    <div th:if="${not #lists.isEmpty(books)}">
+        <h4 class="title is-4 mb-0">List of books</h4>
+        <table class="table is-striped is-fullwidth">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Author</th>
+                <th>Year</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="book : ${books}">
+                <td th:text="${book.getName()}"></td>
+                <td th:text="${book.getAuthor()}"></td>
+                <td th:text="${book.getYear()}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <p th:if="${#lists.isEmpty(books)}" class="has-text-weight-bold has-text-danger mb-4">
+        &#9888; No books found for this person</p>
+
+    <hr>
+    <form th:method="GET" th:action="@{/people/{id}/edit(id=${person.getId()})}">
+        <button class="button is-link has-text-weight-bold mb-4" type="submit">Edit</button>
+    </form>
+
+    <form th:method="DELETE" th:action="@{/people/{id}(id=${person.getId()})}">
+        <button class="button is-danger has-text-weight-bold" type="submit">Delete</button>
+    </form>
 </div>
-<p th:if="${#lists.isEmpty(books)}" style="font-weight: bold;"> &#9888; No books found for this person</p>
-
-<hr/>
-
-<form th:method="DELETE" th:action="@{/people/{id}(id=${person.getId()})}">
-    <input type="submit" value="Delete"/>
-</form>
 </body>
 </html>

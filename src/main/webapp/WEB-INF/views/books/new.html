@@ -3,27 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <title>New Book</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+
+    <style>
+        .squared-container {
+            width: 600px;
+            height: 400px;
+            margin: 0 auto; /* Center horizontally */
+        }
+    </style>
+
 </head>
 <body>
 
-<form th:method="POST" th:action="@{/books}" th:object="${book}">
-    <label for="name">Enter name: </label>
-    <input type="text" th:field="*{name}" id="name"/>
-    <div style="color: red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name error</div>
-    <br/>
+<nav class="navbar is-dark mb-6">
+    <div class="navbar-brand">
+        <a class="navbar-item" href="javascript:history.back()">
+            <span>Back</span>
+        </a>
+        <a class="navbar-item" href="/main">
+            <span>Home</span>
+        </a>
+        <a class="navbar-item" href="/people">
+            <span>People list</span>
+        </a>
+        <a class="navbar-item" href="/books">
+            <span>Books list</span>
+        </a>
+    </div>
+</nav>
 
-    <label for="author">Enter author: </label>
-    <input type="text" th:field="*{author}" id="author"/>
-    <div style="color: red" th:if="${#fields.hasErrors('author')}" th:errors="*{author}">Author error</div>
-    <br/>
+<div class="container squared-container">
+    <div class="notification is-primary is-light">
+        <form th:method="POST" th:action="@{/books}" th:object="${book}">
+            <div class="field">
+                <label class="label" for="name">Name:</label>
+                <div class="control">
+                    <input class="input" type="text" th:field="*{name}" id="name" placeholder="Enter name">
+                </div>
+                <p class="help is-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name error</p>
+            </div>
 
-    <label for="year">Enter year of publishing: </label>
-    <input type="text" th:field="*{year}" id="year"/>
-    <div style="color: red" th:if="${#fields.hasErrors('year')}" th:errors="*{year}">Year error</div>
-    <br/>
+            <div class="field">
+                <label class="label" for="author">Author:</label>
+                <div class="control">
+                    <input class="input" type="text" th:field="*{author}" id="author" placeholder="Enter author">
+                </div>
+                <p class="help is-danger" th:if="${#fields.hasErrors('author')}" th:errors="*{author}">Author error</p>
+            </div>
 
-    <input type="submit" value="Create"/>
-</form>
+            <div class="field">
+                <label class="label" for="year">Year of publishing:</label>
+                <div class="control">
+                    <input class="input" type="text" th:field="*{year}" id="year" placeholder="Enter year">
+                </div>
+                <p class="help is-danger" th:if="${#fields.hasErrors('year')}" th:errors="*{year}">Year error</p>
+            </div>
+
+            <div class="field">
+                <div class="control">
+                    <button class="button is-primary has-text-weight-bold" type="submit">Update</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
 
 </body>
 </html>

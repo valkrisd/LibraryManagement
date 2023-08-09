@@ -3,19 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+
+    <style>
+        .container {
+            width: 1300px;
+            margin: 0 auto; /* Center horizontally */
+        }
+    </style>
+
 </head>
+
 <body>
-<div th:each="person : ${people}">
-    <a th:href="@{/people/{id}(id=${person.getId()})}"
-    th:text="${person.getName()}">user</a>
+
+<nav class="navbar is-dark mb-6">
+    <div class="navbar-brand">
+        <a class="navbar-item" href="javascript:history.back()">
+            <span>Back</span>
+        </a>
+        <a class="navbar-item" href="/main">
+            <span>Home</span>
+        </a>
+        <a class="navbar-item" href="/people">
+            <span>People list</span>
+        </a>
+        <a class="navbar-item" href="/books">
+            <span>Books list</span>
+        </a>
+    </div>
+</nav>
+
+<div class="container mb-4">
+    <h4 class="title is-4 mb-2">People list</h4>
+    <table class="table is-striped is-fullwidth">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="person : ${people}">
+            <td class="has-text-weight-bold has-text-color-primary"><a class="name-link" th:href="@{/people/{id}(id=${person.getId()})}"
+                                                                       th:text="${person.getName()}">book</a></td>
+            <td>
+                <div class="buttons">
+                    <form th:method="GET" th:action="@{/books/{id}/edit(id=${person.getId()})}">
+                        <button class="button is-link has-text-weight-bold mr-4" type="submit">Edit</button>
+                    </form>
+                    <form th:method="DELETE" th:action="@{/books/{id}(id=${person.getId()})}">
+                        <button class="button is-danger has-text-weight-bold" type="submit">Delete</button>
+                    </form>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <form method="get" action="people/new">
+        <button class="button is-link has-text-weight-bold" type="submit">Create new person</button>
+    </form>
 </div>
-
-<br/>
-<hr/>
-
-<form method="get" action="people/new">
-    <input type="submit" value="Create new person"/>
-</form>
-
 </body>
 </html>
+
