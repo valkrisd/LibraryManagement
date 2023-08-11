@@ -13,22 +13,7 @@
     </style>
 </head>
 <body>
-<nav class="navbar is-dark mb-6">
-    <div class="navbar-brand">
-        <a class="navbar-item" href="javascript:history.back()">
-            <span>Back</span>
-        </a>
-        <a class="navbar-item" href="/main">
-            <span>Home</span>
-        </a>
-        <a class="navbar-item" href="/people">
-            <span>People list</span>
-        </a>
-        <a class="navbar-item" href="/books">
-            <span>Books list</span>
-        </a>
-    </div>
-</nav>
+<div th:replace="/common/navbar"></div>
 
 <div class="container squared-container">
     <div class="notification is-info is-light">
@@ -67,7 +52,7 @@
 
             <div class="field">
                 <div class="control">
-                    <button class="button is-link" type="submit">Update</button>
+                    <button class="button is-link has-text-weight-bold" type="submit">Update</button>
                 </div>
             </div>
         </form>

@@ -6,22 +6,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
 </head>
 <body>
-<nav class="navbar is-dark mb-6">
-    <div class="navbar-brand">
-        <a class="navbar-item" href="javascript:history.back()">
-            <span>Back</span>
-        </a>
-        <a class="navbar-item" href="/main">
-            <span>Home</span>
-        </a>
-        <a class="navbar-item" href="/people">
-            <span>People list</span>
-        </a>
-        <a class="navbar-item" href="/books">
-            <span>Books list</span>
-        </a>
-    </div>
-</nav>
+<div th:replace="/common/navbar"></div>
 
 <div class="container mb-4">
     <h4 class="title is-4 mb-2">Book info</h4>

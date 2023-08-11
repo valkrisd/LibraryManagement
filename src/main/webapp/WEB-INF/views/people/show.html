@@ -7,22 +7,7 @@
 </head>
 
 <body>
-<nav class="navbar is-dark mb-6">
-    <div class="navbar-brand">
-        <a class="navbar-item" href="javascript:history.back()">
-            <span>Back</span>
-        </a>
-        <a class="navbar-item" href="/main">
-            <span>Home</span>
-        </a>
-        <a class="navbar-item" href="/people">
-            <span>People list</span>
-        </a>
-        <a class="navbar-item" href="/books">
-            <span>Books list</span>
-        </a>
-    </div>
-</nav>
+<div th:replace="/common/navbar"></div>
 
 <div class="container mb-4">
     <h4 class="title is-4 mb-2">Person info</h4>
@@ -57,13 +42,15 @@
         &#9888; No books found for this person</p>
 
     <hr>
-    <form th:method="GET" th:action="@{/people/{id}/edit(id=${person.getId()})}">
-        <button class="button is-link has-text-weight-bold mb-4" type="submit">Edit</button>
-    </form>
+    <div class="buttons">
+        <form th:method="GET" th:action="@{/people/{id}/edit(id=${person.getId()})}">
+            <button class="button is-link has-text-weight-bold" type="submit">Edit</button>
+        </form>
 
-    <form th:method="DELETE" th:action="@{/people/{id}(id=${person.getId()})}">
-        <button class="button is-danger has-text-weight-bold" type="submit">Delete</button>
-    </form>
+        <form th:method="DELETE" th:action="@{/people/{id}(id=${person.getId()})}">
+            <button class="button is-danger has-text-weight-bold ml-4" type="submit">Delete</button>
+        </form>
+    </div>
 </div>
 </body>
 </html>

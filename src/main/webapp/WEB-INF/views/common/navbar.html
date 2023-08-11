@@ -1,0 +1,47 @@
+<nav class="navbar is-dark mb-6">
+    <div class="navbar-brand">
+        <a class="navbar-item" href="javascript:history.back()">
+            <span><strong>Back</strong></span>
+        </a>
+        <a class="navbar-item" href="/main">
+            <span><strong>Home</strong></span>
+        </a>
+        <a class="navbar-item" href="/people">
+            <span><strong>People</strong></span>
+        </a>
+        <a class="navbar-item" href="/books">
+            <span><strong>Books</strong></span>
+        </a>
+        <!-- Search form -->
+        <div class="navbar-item">
+            <form class="field has-addons" th:method="GET" th:action="@{/books/search}">
+                <div class="control">
+                    <label for="searchInput"></label><input class="input" type="text" placeholder="Find book.."
+                                                            name="query" id="searchInput">
+                </div>
+                <div class="control">
+                    <button class="button is-warning has-text-weight-bold" type="submit" id="searchButton" disabled>
+                        Search
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Get references to the input field and the search button
+        const searchInput = document.getElementById('searchInput');
+        const searchButton = document.getElementById('searchButton');
+
+        // Function to enable or disable the search button based on the input value
+        function updateSearchButtonState() {
+            searchButton.disabled = searchInput.value.trim() === '';
+        }
+
+        // Add an event listener to the input field to update the button state
+        searchInput.addEventListener('input', updateSearchButtonState);
+
+        // Initial update to set the button state based on the initial input value
+        updateSearchButtonState();
+    </script>
+</nav>

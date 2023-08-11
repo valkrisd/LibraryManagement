@@ -31,7 +31,7 @@ public class Person {
     // Country, City, Index (6 digits)
     // Russia, Moscow, 123456
     @Size(max = 100, message = "Address should be less than 100 characters")
-    @Pattern(regexp = "[A-Z]\\w+, [A-Z]\\w+, \\d{6}", message = "Valid address format example: Russia, Moscow, 111111")
+    @Pattern(regexp = "[A-Z]\\w+, [A-Z]\\w+, \\d{6}", message = "Invalid address. Example: Russia, Moscow, 111111 (6 digits)")
     @Column(name = "address")
     private String address;
 

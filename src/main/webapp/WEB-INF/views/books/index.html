@@ -20,22 +20,7 @@
 </head>
 
 <body>
-<nav class="navbar is-dark mb-6">
-    <div class="navbar-brand">
-        <a class="navbar-item" href="javascript:history.back()">
-            <span>Back</span>
-        </a>
-        <a class="navbar-item" href="/main">
-            <span>Home</span>
-        </a>
-        <a class="navbar-item" href="/people">
-            <span>People list</span>
-        </a>
-        <a class="navbar-item" href="/books">
-            <span>Books list</span>
-        </a>
-    </div>
-</nav>
+<div th:replace="/common/navbar"></div>
 
 <div class="container mb-4">
     <h4 class="title is-4 mb-2">Books list</h4>
@@ -65,7 +50,10 @@
         </tbody>
     </table>
 
-    <form method="get" action="books/new">
+    <p th:if="${error}" class="has-text-weight-bold has-text-danger mb-4" th:text="${error}">
+        Error message</p>
+
+    <form th:method="GET" th:action="@{/books/new}">
         <button class="button is-primary has-text-weight-bold" type="submit">Create new book</button>
     </form>
 
