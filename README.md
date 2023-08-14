@@ -18,7 +18,7 @@ The Library Management System is a study Spring MVC project designed to streamli
 
 - Framework: Spring
 - Database: PostgreSQL
-- Front-end: Thymeleaf, HTML, CSS, Bulma.io
+- Front-end: Thymeleaf, HTML, CSS, JavaScript, Bulma
 - Back-end: Java, Spring MVC, Hibernate
 - Dependencies: Spring Data JPA, Spring Validation, PostgreSQL Connector, Thymeleaf
 
