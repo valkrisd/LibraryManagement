@@ -15,7 +15,7 @@ The Library Management System is a study Spring MVC project designed to streamli
 - ➡️ Book Borrowing: Ability to assign available books to readers using the "Assign Book" button, selecting the borrower from a dropdown list.
 - ✅ Data Validation: All user input is validated using Spring Validation and custom validations to ensure data integrity.
 
-## Technology Stack
+## Technology stack
 
 - Framework: Spring
 - Database: PostgreSQL
@@ -23,7 +23,7 @@ The Library Management System is a study Spring MVC project designed to streamli
 - Back-end: Java, Spring MVC, Hibernate
 - Dependencies: Spring Data JPA, Spring Validation, PostgreSQL Connector, Thymeleaf
 
-## Getting Started
+## Getting started
 
 To run the Library Management System locally:
 
