@@ -12,7 +12,7 @@ The Library Management System is a study Spring MVC project designed to streamli
 - 👤 Reader Details: Personalized pages showing reader information and the list of borrowed books. If no books are borrowed, a message is displayed.
 - 📖 Book Details: Detailed information about a specific book, including the borrower's name if currently on loan. A message indicates availability if the book is available.
 - ↩️ Book Return: Capability to mark returned books as available using the "Release Book" button on the book's page.
-- ➡️ Book Borrowing: Ability to assign available books to readers using the "Assign Book" button, selecting the borrower from a dropdown list.
+- ➡️ Book Borrowing: Ability to assign available books to readers using the "Check out" button, selecting the borrower from a dropdown list.
 - ✅ Data Validation: All user input is validated using Spring Validation and custom validations to ensure data integrity.
 
 ## Technology stack
