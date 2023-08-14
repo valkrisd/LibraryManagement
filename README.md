@@ -1,10 +1,9 @@
 # Library Management System
 
-The Library Management System is a study Spring MVC project designed to streamline book management processes for local libraries. The overall idea is to provide librarians with basic tools for registering readers, issuing and returning books, and managing overall book inventory.
+The Library Management System is a study Spring MVC project designed to streamline book management processes for libraries. The overall idea is to provide librarians with basic tools for registering readers, issuing and returning books, and managing overall book inventory.
 
 ## Features
 
-- 📚 Library Management System: A Spring MVC project for efficient book management in local libraries.
 - 👥 User Management: Tools to add, edit, and delete reader information, including full name and date of birth.
 - 📖 Book Management: Functions for adding, editing, and deleting book details, such as title, author, and publication year. Books are associated with individual readers.
 - 👥 Reader Listing: A page to display a list of registered readers, allowing easy search and access to individual profiles.
