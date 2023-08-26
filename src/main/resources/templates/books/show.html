@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Book</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+</head>
+<body>
+<div th:replace="/common/navbar"></div>
+
+<div class="container mb-4">
+    <h4 class="title is-4 mb-2">Book info</h4>
+    <div class="notification is-primary is-light">
+        <p class="subtitle is-6" th:text="'Name: ' + ${book.getName()}">VALUE</p>
+        <p class="subtitle is-6" th:text="'Author: ' + ${book.getAuthor()}">VALUE</p>
+        <p class="subtitle is-6" th:text="'Year of publishing: ' + ${book.getYear()}">VALUE</p>
+    </div>
+
+    <form th:method="PATCH" th:action="@{/books/release/{id}(id=${book.getId()})}" th:if="${person != null}">
+        <div class="field is-grouped">
+            <p class="control">
+                <button class="button is-primary has-text-weight-bold" type="submit">Release book</button>
+            </p>
+        </div>
+    </form>
+
+    <form th:method="PATCH" th:action="@{/books/set/{bookId}(bookId=${book.getId()})}" th:if="${person == null}">
+        <div class="field is-grouped">
+            <label class="label">This book is available. Check it out for someone?</label>
+            <p class="control">
+            <div class="select">
+                <label>
+                    <select th:object="${newOwner}" th:field="*{id}">
+                        <option th:each="person : ${people}" th:value="${person.getId()}"
+                                th:text="${person.getName()}"></option>
+                    </select>
+                </label>
+            </div>
+
+            <p class="control">
+                <button class="button is-primary has-text-weight-bold ml-4" type="submit">Check out</button>
+            </p>
+        </div>
+    </form>
+
+    <hr>
+
+    <div class="buttons">
+        <form th:method="GET" th:action="@{/books/{id}/edit(id=${book.getId()})}">
+            <button class="button is-primary has-text-weight-bold" type="submit">Edit</button>
+        </form>
+
+        <form th:method="DELETE" th:action="@{/books/{id}(id=${book.getId()})}">
+            <button class="button is-danger has-text-weight-bold ml-4" type="submit">Delete</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>
+

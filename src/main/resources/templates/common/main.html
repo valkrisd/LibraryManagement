@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Library Portal</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <style>
+        .large-button {
+            font-size: 3.5rem;
+            padding: 250px 180px; /* Adjust padding as needed */
+        }
+
+        .intro-text {
+            font-size: 1.2rem;
+            margin-top: 20px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+<div th:replace="/common/navbar"></div>
+<section class="section">
+    <div class="container has-text-centered">
+        <h1 class="title is-1">Welcome to the Library Portal!</h1>
+        <p class="subtitle intro-text">Explore the collection of books or check out the list of readers</p>
+        <div class="columns is-vcentered">
+            <div class="column is-half">
+                <a href="../books" class="button is-primary is-light large-button has-text-weight-bold">
+                    Explore books
+                </a>
+            </div>
+            <div class="column is-half">
+                <a href="../people" class="button is-link is-light large-button has-text-weight-bold">
+                    Readers info
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>
+

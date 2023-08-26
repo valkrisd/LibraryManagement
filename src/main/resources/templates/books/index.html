@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+
+    <style>
+        .container {
+            width: 1300px;
+            margin: 0 auto; /* Center horizontally */
+        }
+
+        .name-link {
+            color: #00d1b2; /* Change to your desired color */
+        }
+    </style>
+
+</head>
+
+<body>
+<div th:replace="/common/navbar"></div>
+
+<div class="container mb-4">
+    <h4 class="title is-4 mb-2">Books list</h4>
+
+    <table class="table is-striped is-fullwidth">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="book : ${books}">
+            <td class="has-text-weight-bold has-text-color-primary"><a class="name-link" th:href="@{/books/{id}(id=${book.getId()})}"
+                                                                       th:text="${book.getName()}">book</a></td>
+            <td>
+                <div class="buttons">
+                    <form th:method="GET" th:action="@{/books/{id}/edit(id=${book.getId()})}">
+                        <button class="button is-primary has-text-weight-bold mr-4" type="submit">Edit</button>
+                    </form>
+                    <form th:method="DELETE" th:action="@{/books/{id}(id=${book.getId()})}">
+                        <button class="button is-danger has-text-weight-bold" type="submit">Delete</button>
+                    </form>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <p th:if="${error}" class="has-text-weight-bold has-text-danger mb-4" th:text="${error}">
+        Error message</p>
+
+    <form th:method="GET" th:action="@{/books/new}">
+        <button class="button is-primary has-text-weight-bold" type="submit">Create new book</button>
+    </form>
+
+</div>
+</body>
+</html>

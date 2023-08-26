@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Person</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+</head>
+
+<body>
+<div th:replace="/common/navbar"></div>
+
+<div class="container mb-4">
+    <h4 class="title is-4 mb-2">Person info</h4>
+    <div class="notification is-info is-light">
+        <p class="subtitle is-6" th:text="'Name: ' + ${person.getName()}">VALUE</p>
+        <p class="subtitle is-6" th:text="'Age: ' + ${person.getAge()}">VALUE</p>
+        <p class="subtitle is-6" th:text="'Email: ' + ${person.getEmail()}">VALUE</p>
+        <p class="subtitle is-6" th:text="'Address: ' + ${person.getAddress()}">VALUE</p>
+    </div>
+
+    <div th:if="${not #lists.isEmpty(books)}">
+        <h4 class="title is-4 mb-0">List of books</h4>
+        <table class="table is-striped is-fullwidth">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Author</th>
+                <th>Year</th>
+                <th>Expired?</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="book : ${books}" th:style="${book.isExpired() ? 'color: red;' : ''}">
+                <td th:text="${book.getName()}"></td>
+                <td th:text="${book.getAuthor()}"></td>
+                <td th:text="${book.getYear()}"></td>
+                <td th:text="${book.isExpired() ? 'Yes' : 'No'}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+
+    <p th:if="${#lists.isEmpty(books)}" class="has-text-weight-bold has-text-danger mb-4">
+        &#9888; No books found for this person</p>
+
+    <hr>
+    <div class="buttons">
+        <form th:method="GET" th:action="@{/people/{id}/edit(id=${person.getId()})}">
+            <button class="button is-link has-text-weight-bold" type="submit">Edit</button>
+        </form>
+
+        <form th:method="DELETE" th:action="@{/people/{id}(id=${person.getId()})}">
+            <button class="button is-danger has-text-weight-bold ml-4" type="submit">Delete</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>
