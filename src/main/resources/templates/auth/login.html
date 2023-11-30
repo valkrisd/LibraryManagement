@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Library Portal - Login</title>
@@ -24,7 +25,7 @@
 
         <div class="auth-form">
 
-            <h1 class="title has-text-centered">Do the thing. Login stuff</h1>
+            <h1 class="title has-text-centered">Just do it!</h1>
 
             <form method="post" action="/process_login">
 
@@ -46,11 +47,18 @@
                     </div>
                 </div>
 
-                <div class="control">
-                    <button class="button is-link has-text-weight-bold">Login</button>
+                <div class="field is-grouped">
+                    <p class="control">
+                        <button class="button is-link has-text-weight-bold">Log in</button>
+                    </p>
+                    <p class="control">
+                        <a class="button is-primary has-text-weight-bold" href="/auth/registration">
+                            Create account
+                        </a>
+                    </p>
                 </div>
 
-                <div class="notification is-danger" th:if="${param.error}">
+                <div class="notification is-danger is-light mt-4" th:if="${param.error}">
                     Invalid username or password
                 </div>
 
@@ -63,4 +71,5 @@
 </section>
 
 </body>
+
 </html>

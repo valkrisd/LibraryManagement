@@ -30,7 +30,7 @@ public class SecurityConfig {
         // настраиваем правила авторизации: важен их порядок, потому что они применяются сверху-вниз
         http.authorizeHttpRequests((authorizeHttpRequests) -> authorizeHttpRequests
                 // смотрим откуда пришел запрос и указываем правило доступности (permit all)
-                .antMatchers("/auth/login", "/error").permitAll()
+                .antMatchers("/auth/login", "/auth/registration", "/error").permitAll()
                 // на все остальные запросы пускаем только аутентифицированнх юзеров
                 .anyRequest().authenticated());
 

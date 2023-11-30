@@ -11,10 +11,12 @@ public class Administrator {
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @NotEmpty
+
     @Size(min = 2, max = 100, message = "Username must be between 2 and 100 characters")
     @Column(name = "username")
     private String username;
+
+    @Size(min = 7, message = "Password must have at least 7 characters")
     @Column(name = "password")
     private String password;
 
@@ -51,7 +53,7 @@ public class Administrator {
 
     @Override
     public String toString() {
-        return "Person{" +
+        return "Administrator{" +
                 "id=" + id +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
