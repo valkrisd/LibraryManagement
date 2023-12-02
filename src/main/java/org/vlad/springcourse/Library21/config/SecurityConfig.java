@@ -37,6 +37,9 @@ public class SecurityConfig {
         // отключаем защиту от CSRF (без этого работать не будет, но вообще так делать не надо)
         http.csrf().disable();
 
+        // реализиуем логику log out
+        http.logout((logout) -> logout.logoutUrl("/logout").logoutSuccessUrl("/auth/login"));
+
         return http.build();
     }
 

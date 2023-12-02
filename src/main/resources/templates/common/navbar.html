@@ -12,21 +12,35 @@
         <a class="navbar-item" href="/books">
             <span><strong>Books</strong></span>
         </a>
-        <!-- Search form -->
-        <div class="navbar-item">
-            <form class="field has-addons" th:method="GET" th:action="@{/books/search}">
-                <div class="control">
-                    <label for="searchInput"></label><input class="input" type="text" placeholder="Find book.."
-                                                            name="query" id="searchInput">
-                </div>
-                <div class="control">
-                    <button class="button is-warning has-text-weight-bold" type="submit" id="searchButton" disabled>
-                        Search
-                    </button>
-                </div>
+    </div>
+
+    <!-- Search form -->
+    <div class="navbar-item">
+        <form class="field has-addons" th:method="GET" th:action="@{/books/search}">
+            <div class="control">
+                <label for="searchInput"></label><input class="input" type="text" placeholder="Find book.."
+                                                        name="query" id="searchInput">
+            </div>
+            <div class="control">
+                <button class="button is-primary has-text-weight-bold" type="submit" id="searchButton" disabled>
+                    Search
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <div class="navbar-menu">
+        <div class="navbar-end">
+            <form method="post" action="/logout" class="mr-4 mt-2">
+                <button type="submit" class="button is-link">
+                    <strong>Log out</strong>
+                </button>
             </form>
         </div>
     </div>
+
+
+
 
     <script>
         // Get references to the input field and the search button
