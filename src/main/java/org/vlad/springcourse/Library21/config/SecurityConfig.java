@@ -35,9 +35,6 @@ public class SecurityConfig {
                 // на все остальные запросы пускаем только аутентифицированнх юзеров
                 .anyRequest().authenticated());
 
-        // отключаем защиту от CSRF (без этого работать не будет, но вообще так делать не надо)
-        http.csrf().disable();
-
         // реализиуем логику log out
         http.logout((logout) -> logout.logoutUrl("/logout").logoutSuccessUrl("/auth/login"));
 

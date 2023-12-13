@@ -18,16 +18,13 @@
 </head>
 
 <body>
-
 <section class="section">
-
     <div class="container">
-
         <div class="auth-form">
-
             <header class="title has-text-centered">Hello there!</header>
 
             <form method="post" action="/process_login">
+                <input type="hidden" th:name = "${_csrf.parameterName}" th:value="${_csrf.token}"/>
                 <fieldset>
                     <div class="field">
                         <label class="label" for="username">Username</label>
@@ -60,14 +57,9 @@
                     </div>
                 </fieldset>
             </form>
-
         </div>
-
     </div>
-
 </section>
-
 </body>
-
 </html>
 
