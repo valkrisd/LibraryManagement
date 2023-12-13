@@ -31,7 +31,7 @@
 
     <div class="navbar-menu">
         <div class="navbar-end">
-            <form method="post" action="/logout" class="mr-4 mt-2">
+            <form th:method= "POST" th:action="@{/logout}" class="mr-4 mt-2">
                 <button type="submit" class="button is-link">
                     <strong>Log out</strong>
                 </button>
