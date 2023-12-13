@@ -2,9 +2,10 @@ package org.vlad.springcourse.Library21.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.crypto.password.NoOpPasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
@@ -43,9 +44,10 @@ public class SecurityConfig {
         return http.build();
     }
 
+
     // Указываем алгоритм шифрования пароля (в данном случае без шифрования вообще, и опять же так делать не надо)
     @Bean
     public PasswordEncoder getPasswordREncode() {
-        return NoOpPasswordEncoder.getInstance();
+        return new BCryptPasswordEncoder();
     }
 }
